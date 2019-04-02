@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+        name: rprobetcp
+spec:
+        containers:
+                - name: rprobetcp
+                  image: nginx
+                  ports:
+                          - containerPort: 80
+                  readinessProbe:
+                          tcpSocket:
+                                  port: 80
+                          initialDelaySeconds: 10
+                          periodSeconds: 1
