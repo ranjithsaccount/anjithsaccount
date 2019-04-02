@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+        name: objcountpod2
+        namespace: objectcountspace
+spec:
+        containers:
+                - name: objcountcon2
+                  image: nginx
+

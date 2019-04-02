@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+        name: rqb
+spec:
+        containers:
+                - name: rqburstable
+                  image: nginx
+                  ports:
+                          - containerPort: 80
+                  resources:
+                          requests:
+                                  cpu: 100m
+                                  memory: 100M
+                          limits:
+                                  cpu: 110m
+                                  memory: 110M

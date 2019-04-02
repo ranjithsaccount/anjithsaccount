@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+        name: rqg
+spec:
+        containers:
+                - name: rqguaranteed
+                  image: nginx
+                  ports:
+                          - containerPort: 80
+                  resources:
+                          requests:
+                                  cpu: 100m
+                                  memory: 100M
+                          limits:
+                                  cpu: 100m
+                                  memory: 100M
