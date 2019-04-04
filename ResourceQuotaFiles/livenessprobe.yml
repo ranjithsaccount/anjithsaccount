@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+        name: lprobe
+spec:
+        containers:
+                - name: lprobecon
+                  image: nginx
+                  ports:
+                          - containerPort: 80
+                  livenessProbe:
+                          exec:
+                                  command:
+                                          - cat
+                                          - /etc/passwd1
+                           
+                          initialDelaySeconds: 10
+                          periodSeconds: 1
+
