@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: deployblugreenstrategy1
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   env: prod
+ template:
+  metadata:
+   name: deployblugreenstrategypods1
+   labels:
+    env: prod
+  spec:
+   containers:
+    - name: deployblugreenstrategycons1
+      image: ranjithsaccount/ranjith:myfirstimage
+      ports:
+       - containerPort: 80
