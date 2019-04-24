@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: tlspod
+ labels:
+  check: tls
+spec:
+ containers:
+  - name: tlscon
+    image: nginx
+    ports:
+     - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: tlsnodeport
+spec:
+ type: NodePort
+ ports:
+  - port: 8080
+    targetPort: 80
+ selector:
+  check: tls

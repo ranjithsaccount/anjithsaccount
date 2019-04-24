@@ -1,0 +1,19 @@
+openssl req -newkey rsa:2048 -nodes -keyout ranjithdomain.key -out ranjithdomain.csr
+
+openssl x509 -req -days 365 -in ranjithdomain.csr -signkey ranjithdomain.key -out ranjithdomain.crt
+
+openssl x509 -inform DER -outform PEM -in ranjithdomain.crt -out ranjithdomain.crt.pem
+
+TLS Secret Command:
+
+kubectl create secret tls tlssecret --cert ranjithdomain.crt --key ranjithdomain.key
+
+
+****
+curl --cacert /root/ingress/certs/ranjithdomain.crt https://ranjithstls.website.com
+[OR]
+
+sudo cp ranjithdomain.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+********
+

@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ranjithingress
+spec:
+ rules:
+ - host: ranjiths.website.com
+   http:
+    paths:
+     - backend:
+        serviceName: ingressnodeport
+        servicePort: 8001

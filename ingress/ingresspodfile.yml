@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: ingresspod
+ labels:
+  check: ingress
+spec:
+ containers:
+  - name: ingresscon
+    image: nginx
+    ports:
+     - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: ingressnodeport
+spec:
+ type: NodePort
+ ports:
+  - port: 8001
+    targetPort: 80
+ selector:
+  check: ingress
