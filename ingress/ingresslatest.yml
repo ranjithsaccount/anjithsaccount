@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gopiingress
+spec:
+  rules:
+  - host: gopinginx.com
+    http:
+      paths:
+        - backend:
+            serviceName: ingresspathnodeport
+            servicePort: 8002
