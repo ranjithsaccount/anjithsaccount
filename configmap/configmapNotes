@@ -1,0 +1,13 @@
+kubectl create configmap confmaplit --from-literal=sqlpassword=abcd
+
+kubectl create configmap confmaplitenvs --from-literal=MYSQL_ROOT_PASSWORD=abcd --from-literal=MYSQL_DATABASE=mysqldb --from-literal=MYSQL_USER=ranjith --from-literal=MYSQL_PASSWORD=abcdef
+
+root@configmaplitenvs:/# mysql -u ranjith mysqldb -p
+mysql> show databases;
+mysql> status
+
+
+kubectl create configmap confmapfile --from-file=sqlpass=key
+whereas- "key" is the file name with values to be passed
+
+

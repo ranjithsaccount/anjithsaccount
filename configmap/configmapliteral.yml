@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: configmaplit
+spec:
+ containers:
+  - name: configmaplitcon
+    image: mysql
+    ports:
+     - containerPort: 3300
+    env:
+     - name: MYSQL_ROOT_PASSWORD
+       valueFrom:
+        configMapKeyRef:
+         name: confmaplit
+         key: sqlpassword
