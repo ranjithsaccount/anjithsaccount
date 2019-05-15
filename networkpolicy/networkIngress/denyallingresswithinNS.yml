@@ -1,0 +1,12 @@
+# DENY all- Within namespace1 pods could not connect each others eventhough in same namespace
+# From namespace1 pods we can connect to pods in namespace2
+# From namespace2 pods we cannot connect to any pods in namespace1
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  namespace: dev
+  name: defaultdeny
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress

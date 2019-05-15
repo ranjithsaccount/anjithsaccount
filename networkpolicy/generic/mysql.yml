@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mysqlpod
+ labels:
+  role: mysql
+spec:
+ containers:
+  - name: mysqlcon
+    image: mysql:5.5
+    ports:
+     - containerPort: 3306
+    env:
+     - name: MYSQL_ROOT_PASSWORD
+       value: abcd
+

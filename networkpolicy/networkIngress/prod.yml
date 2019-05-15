@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ namespace: prod
+ name: prodweb1
+ labels:
+  role: prodweb1
+spec:
+ containers:
+  - name: prodweb1
+    image: nginx
+    ports:
+     - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+ namespace: prod
+ name: prodweb2
+ labels:
+  role: prodweb2
+spec:
+ containers:
+  - name: prodweb2
+    image: nginx
+    ports:
+     - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+ namespace: prod
+ name: proddb
+ labels:
+  role: proddb
+spec:
+ containers:
+  - name: proddb
+    image: mysql:5.6
+    ports:
+     - containerPort: 3306
+    env:
+     - name: MYSQL_ROOT_PASSWORD
+       value: abcd

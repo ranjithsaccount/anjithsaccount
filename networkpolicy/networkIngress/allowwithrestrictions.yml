@@ -1,0 +1,22 @@
+#Allow ingress only from specific pod across namespace
+##Allows ingress to devdb only from prodweb2 in prod namespace
+#Rest of the pods in prod namespace will not be able to conect to devdb pod
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  namespace: dev
+  name: allowwithrestrictions
+spec:
+  podSelector:
+    matchLabels:
+      role: devdb
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            env: prod
+        podSelector:
+          matchLabels:
+            role: prodweb2
+  policyTypes:
+  - Ingress

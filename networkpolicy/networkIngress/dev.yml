@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ namespace: dev
+ name: devweb1
+ labels:
+  role: devweb1
+spec:
+ containers:
+  - name: devweb1
+    image: nginx
+    ports:
+     - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+ namespace: dev
+ name: devweb2
+ labels:
+  role: devweb2
+spec:
+ containers:
+  - name: devweb2
+    image: nginx
+    ports:
+     - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+ namespace: dev
+ name: devdb
+ labels:
+  role: devdb
+spec:
+ containers:
+  - name: devdb
+    image: mysql:5.6
+    ports:
+     - containerPort: 3306
+    env:
+     - name: MYSQL_ROOT_PASSWORD
+       value: abcd

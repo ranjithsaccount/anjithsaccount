@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+ name: podselector
+spec:
+ podSelector:
+  matchLabels:
+   role: mysql
+ policyTypes:
+ - Ingress
+ ingress:
+ - from:
+   - podSelector:
+      matchLabels:
+       role: web1
+   ports:
+    - protocol: TCP
+      port: 3306
+
+

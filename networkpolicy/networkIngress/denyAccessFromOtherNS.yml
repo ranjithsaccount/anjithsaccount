@@ -1,0 +1,17 @@
+#Deny traffic when accessed from other namespace - From namespace2 we cannot connect to pods in namespace1
+#namespace1 pods can connect to each pods within namespace1
+#namespace1 pods can connect to all pods in namespace2
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  namespace: dev
+  name: defaultallow
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          env: dev

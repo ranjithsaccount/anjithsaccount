@@ -1,0 +1,15 @@
+# Reverses out the effect from denyallingresswithinNS.yml
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  namespace: dev
+  name: defaultallow
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          env: dev
