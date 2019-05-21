@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir1
+spec:
+  containers:
+    - name: c1
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: emmount
+          mountPath: /cache
+    - name: c2
+      image: mysql
+      ports:
+        - containerPort: 3306
+      env:
+         - name: MYSQL_ROOT_PASSWORD
+           value: abcd
+      volumeMounts:
+        - name: emmount
+          mountPath: /tmp/cache
+  volumes:
+    - name: emmount
+      emptyDir: {}

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydirpod
+spec:
+  containers:
+    - name: c1
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: emmount
+          mountPath: /cache
+  volumes:
+    - name: emmount
+      emptyDir: {}

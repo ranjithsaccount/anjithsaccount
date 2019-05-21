@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: daemonsetpods
+  labels:
+    app: web
+spec:
+  selector:
+    matchLabels:
+      name: daemonsetpods
+  template:
+    metadata:
+      labels:
+        name: daemonsetpods
+    spec:
+      containers:
+        - name: con
+          image: nginx
+          ports:
+            - containerPort: 80

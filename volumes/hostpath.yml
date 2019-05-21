@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpathpod
+spec:
+  containers:
+    - name: c1
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: emmount
+          mountPath: /cache
+  volumes:
+    - name: emmount
+      hostPath:
+        path: /etc
+        type: Directory
